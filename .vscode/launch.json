@@ -13,6 +13,17 @@
             "stopAtEntry": false,
             "preLaunchTask": "CUDA: BUILD",
             "cwd": "${fileDirname}",
+            "environment": [
+                {
+                    "name": "SLURM_JOB_GPUS",
+                    "value": "3" // We use GPU 3 for debugging. GPU 0-2 are used by nvshare for all other tasks
+                },
+                {
+                    "name": "CUDA_VISIBLE_DEVICES",
+                    "value": "3"
+                }
+            ]
         },
     ]
 }
+
