@@ -90,7 +90,8 @@ void cpu_stride_loop(int* vec, int size)
         auto start = chrono::high_resolution_clock::now();
 
         for (int i = 0; i < size; i++) {
-            int strided_i = (i * stride) % size;
+            int strided_i = (i * stride);
+            strided_i = strided_i  % size + (strided_i / size);
             vec[strided_i] = vec[strided_i] + 1;
         }
 
