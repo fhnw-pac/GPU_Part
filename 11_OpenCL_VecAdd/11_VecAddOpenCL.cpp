@@ -13,6 +13,7 @@ vectorC   = all Three
 Using OpenCL
 
 */
+#define CL_TARGET_OPENCL_VERSION 300
 #include <CL/cl.h>
 
 #include <iostream>
@@ -69,7 +70,7 @@ int main(int argc, char** argv) {
 	// Create context and cmdQueue
 	cl_context context = clCreateContext(NULL, 1, &deviceID, NULL, NULL, &errCode);
 	clErrCheck(errCode);
-	cl_command_queue commandQueue = clCreateCommandQueue(context, deviceID, 0, &errCode);
+	cl_command_queue commandQueue = clCreateCommandQueueWithProperties(context, deviceID, NULL, &errCode);
 	clErrCheck(errCode);
 
 	// Allocate memory on GPU
